@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.0.3](https://github.com/dlsc-software-consulting-gmbh/UnitFX/tree/1.0.3) (2019-09-10)
+[Full Changelog](https://github.com/dlsc-software-consulting-gmbh/UnitFX/compare/1.0.2...1.0.3)
+
 ## [1.0.2](https://github.com/dlsc-software-consulting-gmbh/UnitFX/tree/1.0.2) (2019-09-10)
 [Full Changelog](https://github.com/dlsc-software-consulting-gmbh/UnitFX/compare/1.0.1...1.0.2)
 
