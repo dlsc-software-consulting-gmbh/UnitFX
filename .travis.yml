@@ -1,6 +1,5 @@
 language: java
 
-# to make the build work with oraclejdk8: https://travis-ci.community/t/solved-oraclejdk8-installation-failing-still-again/3428
 dist: trusty
 
 sudo: false   # Linux OS: run in container
