@@ -9,7 +9,7 @@
     <parent>
         <groupId>com.dlsc.unitfx</groupId>
         <artifactId>parent</artifactId>
-        <version>1.0.5</version>
+        <version>1.0.6</version>
     </parent>
 
     <artifactId>unitfx-demo</artifactId>
@@ -59,7 +59,7 @@
         <dependency>
             <groupId>com.dlsc.unitfx</groupId>
             <artifactId>unitfx</artifactId>
-            <version>1.0.5</version>
+            <version>1.0.6</version>
         </dependency>
 
         <!-- Logging -->

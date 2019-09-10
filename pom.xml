@@ -7,7 +7,7 @@
     <name>UnitFXParent</name>
     <groupId>com.dlsc.unitfx</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -39,7 +39,7 @@
             <dependency>
                 <groupId>com.dlsc.unitfx</groupId>
                 <artifactId>unitfx</artifactId>
-                <version>1.0.5</version>
+                <version>1.0.6</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
