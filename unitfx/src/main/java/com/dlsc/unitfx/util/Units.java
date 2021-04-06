@@ -4,7 +4,7 @@ import com.dlsc.unitfx.QuantityInputField;
 import tech.units.indriya.AbstractSystemOfUnits;
 import tech.units.indriya.AbstractUnit;
 import tech.units.indriya.format.UnitStyle;
-import tech.units.indriya.function.RationalConverter;
+import tech.units.indriya.function.MultiplyConverter;
 import tech.units.indriya.unit.AlternateUnit;
 import tech.units.indriya.unit.TransformedUnit;
 
@@ -47,9 +47,9 @@ public final class Units extends AbstractSystemOfUnits {
     public static final Unit<Length> CENTIMETRE = addUnit(Length.class, MetricPrefix.CENTI(METRE), null, false);
     public static final Unit<Length> MILLIMETRE = addUnit(Length.class, MetricPrefix.MILLI(METRE), null, false);
     public static final Unit<Length> KILOMETRE = addUnit(Length.class, MetricPrefix.KILO(METRE), null, false);
-    public static final Unit<Length> FOOT = addUnit(Length.class, new TransformedUnit<>("ft", METRE, new RationalConverter(3048, 10000)), "ft", false);
-    public static final Unit<Length> INCH = addUnit(Length.class, new TransformedUnit<>("in", FOOT, new RationalConverter(1, 12)), "in", false);
-    public static final Unit<Length> NAUTICAL_MILE = addUnit(Length.class, new TransformedUnit<>("nm", METRE, new RationalConverter(1852, 1)), "nm", false);
+    public static final Unit<Length> FOOT = addUnit(Length.class, new TransformedUnit<>("ft", METRE, MultiplyConverter.ofRational(3048, 10000)), "ft", false);
+    public static final Unit<Length> INCH = addUnit(Length.class, new TransformedUnit<>("in", FOOT, MultiplyConverter.ofRational(1, 12)), "in", false);
+    public static final Unit<Length> NAUTICAL_MILE = addUnit(Length.class, new TransformedUnit<>("nm", METRE, MultiplyConverter.of(1852)), "nm", false);
 
 
     // Temperature
@@ -99,7 +99,9 @@ public final class Units extends AbstractSystemOfUnits {
      * @param <Q> The quantity type.
      * @return The list of registered units in this system of units.
      */
+    @SuppressWarnings("unchecked")
     public <Q extends Quantity<Q>> List<Unit<Q>> getUnits(Class<Q> type) {
+        @SuppressWarnings("rawtypes")
         List units = Collections.unmodifiableList(Optional
                 .ofNullable(quantityToUnits.get(type))
                 .orElse(Collections.emptyList())
