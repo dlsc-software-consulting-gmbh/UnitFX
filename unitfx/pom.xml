@@ -9,17 +9,22 @@
     <version>1.0.7</version>
     <packaging>jar</packaging>
 
+    <parent>
+        <groupId>com.dlsc.unitfx</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0.7</version>
+    </parent>
     <name>UnitFX</name>
     <description>A framework for creating unit of measure (UOM) controls.
     </description>
-    <url>https://github.com/dlemmermann/UnitFX</url>
+    <url>https://github.com/dlsc-software-consulting-gmbh/UnitFX</url>
     <licenses>
         <license>
             <name>Apache 2.0</name>
         </license>
     </licenses>
     <scm>
-        <url>https://github.com/dlemmermann/UnitFX</url>
+        <url>https://github.com/dlsc-software-consulting-gmbh/UnitFX</url>
     </scm>
 
     <developers>
@@ -77,13 +82,14 @@
                 <configuration>
                     <source>11</source>
                     <target>11</target>
+                    <release>11</release>
                 </configuration>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>3.2.0</version>
                 <configuration>
                     <failOnError>false</failOnError>
                     <force>true</force>
@@ -124,13 +130,13 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>12.0.1</version>
+            <version>${javafx.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>12.0.1</version>
+            <version>${javafx.version}</version>
         </dependency>
 
         <!-- Testing -->
