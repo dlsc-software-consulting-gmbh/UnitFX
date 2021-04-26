@@ -6,13 +6,13 @@
 
     <groupId>com.dlsc.unitfx</groupId>
     <artifactId>unitfx</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>com.dlsc.unitfx</groupId>
         <artifactId>parent</artifactId>
-        <version>1.0.7</version>
+        <version>1.0.8</version>
     </parent>
     <name>UnitFX</name>
     <description>A framework for creating unit of measure (UOM) controls.
