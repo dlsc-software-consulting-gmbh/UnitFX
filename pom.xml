@@ -4,10 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.dlsc</groupId>
+        <artifactId>dlsc-maven-parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
     <name>UnitFXParent</name>
     <groupId>com.dlsc.unitfx</groupId>
-    <artifactId>parent</artifactId>
-    <version>1.0.8</version>
+    <artifactId>unitfx-parent</artifactId>
+    <version>1.0.9-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -16,11 +22,14 @@
     </modules>
 
     <properties>
+        <project.identifier>unitfx</project.identifier>
+        <project.github.repository>dlsc-software-consulting-gmbh/UnitFX</project.github.repository>
+        <local.repository.path>/tmp/repository</local.repository.path>
         <sonar.projectKey>dlsc-software-consulting-gmbh_UnitFX</sonar.projectKey>
-        <sonar.organization>dlsc-software-consulting-gmbh</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
         <asciidoctor.maven.plugin.version>1.6.0</asciidoctor.maven.plugin.version>
         <asciidoctorj.version>1.6.2</asciidoctorj.version>
         <jruby.version>9.2.6.0</jruby.version>
@@ -32,7 +41,12 @@
             <dependency>
                 <groupId>com.dlsc.unitfx</groupId>
                 <artifactId>unitfx</artifactId>
-                <version>1.0.8</version>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.measure</groupId>
+                <artifactId>unit-api</artifactId>
+                <version>2.1.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -43,6 +57,7 @@
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
                 <version>${asciidoctor.maven.plugin.version}</version>
+                <inherited>false</inherited>
                 <dependencies>
                     <!-- Comment this section to use the default jruby artifact provided by the plugin -->
                     <dependency>
@@ -88,5 +103,39 @@
         </plugins>
     </build>
 
-
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jreleaser</groupId>
+                        <artifactId>jreleaser-maven-plugin</artifactId>
+                        <version>0.10.0</version>
+                        <configuration>
+                            <jreleaser>
+                                <release>
+                                    <github>
+                                        <branch>master</branch>
+                                        <tagName>{{projectVersion}}</tagName>
+                                        <overwrite>true</overwrite>
+                                        <changelog>
+                                            <formatted>ALWAYS</formatted>
+                                            <format>- {{commitShortHash}} {{commitTitle}}</format>
+                                            <contributors>
+                                                <format>- {{contributorName}}{{#contributorUsernameAsLink}} ({{.}}){{/contributorUsernameAsLink}}</format>
+                                            </contributors>
+                                            <hide>
+                                                <contributors>GitHub</contributors>
+                                            </hide>
+                                        </changelog>
+                                    </github>
+                                </release>
+                            </jreleaser>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
