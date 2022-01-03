@@ -102,4 +102,40 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jreleaser</groupId>
+                        <artifactId>jreleaser-maven-plugin</artifactId>
+                        <version>0.10.0</version>
+                        <configuration>
+                            <jreleaser>
+                                <release>
+                                    <github>
+                                        <branch>master</branch>
+                                        <tagName>{{projectVersion}}</tagName>
+                                        <overwrite>true</overwrite>
+                                        <changelog>
+                                            <formatted>ALWAYS</formatted>
+                                            <format>- {{commitShortHash}} {{commitTitle}}</format>
+                                            <contributors>
+                                                <format>- {{contributorName}}{{#contributorUsernameAsLink}} ({{.}}){{/contributorUsernameAsLink}}</format>
+                                            </contributors>
+                                            <hide>
+                                                <contributors>GitHub</contributors>
+                                            </hide>
+                                        </changelog>
+                                    </github>
+                                </release>
+                            </jreleaser>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
