@@ -23,4 +23,8 @@ different than the base unit.
 
 ### Building
 
-**JDK 17** is required to build this project.
+**JDK 17** is required to build this project. Use the provided Maven wrapper to launch the build
+
+```
+$ ./mvnw verify
+```
