@@ -4,72 +4,34 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.dlsc.unitfx</groupId>
-    <artifactId>unitfx</artifactId>
-    <version>1.0.8</version>
-    <packaging>jar</packaging>
-
     <parent>
         <groupId>com.dlsc.unitfx</groupId>
-        <artifactId>parent</artifactId>
-        <version>1.0.8</version>
+        <artifactId>unitfx-parent</artifactId>
+        <version>1.0.9-SNAPSHOT</version>
     </parent>
-    <name>UnitFX</name>
-    <description>A framework for creating unit of measure (UOM) controls.
-    </description>
-    <url>https://github.com/dlsc-software-consulting-gmbh/UnitFX</url>
-    <licenses>
-        <license>
-            <name>Apache 2.0</name>
-        </license>
-    </licenses>
-    <scm>
-        <url>https://github.com/dlsc-software-consulting-gmbh/UnitFX</url>
-    </scm>
 
-    <developers>
-        <developer>
-            <name>Dirk Lemmermann</name>
-            <url>http://www.dlsc.com</url>
-            <organization>DLSC Software &amp; Consulting</organization>
-        </developer>
-    </developers>
+    <artifactId>unitfx</artifactId>
+    <packaging>jar</packaging>
+    <name>UnitFX</name>
+    <description>A framework for creating unit of measure (UOM) controls.</description>
+    <url>https://github.com/dlsc-software-consulting-gmbh/UnitFX</url>
+    <inceptionYear>2019</inceptionYear>
+
+    <scm>
+        <connection>scm:git:${repository.url}</connection>
+        <developerConnection>scm:git:${repository.url}</developerConnection>
+        <url>${repository.url}</url>
+        <tag>HEAD</tag>
+    </scm>
 
     <properties>
         <checkstyle.path>../config/checkstyle/checkstyle.xml</checkstyle.path>
     </properties>
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>11</source>
-                    <target>11</target>
-                    <release>11</release>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.2.0</version>
                 <configuration>
                     <failOnError>false</failOnError>
                     <force>true</force>
@@ -100,7 +62,6 @@
     </build>
 
     <dependencies>
-
         <dependency>
             <groupId>tech.units</groupId>
             <artifactId>indriya</artifactId>
@@ -123,7 +84,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
 

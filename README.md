@@ -20,3 +20,7 @@ different than the base unit.
 *At least **JDK 11** is required.*
 
 ![screenshot of demo_app](docs/images/demo.png) 
+
+### Building
+
+**JDK 17** is required to build this project.
