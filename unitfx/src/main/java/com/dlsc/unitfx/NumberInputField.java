@@ -123,7 +123,7 @@ public abstract class NumberInputField<T extends Number> extends CustomTextField
 
     /**
      * The minimum value that can be entered in this field.  If this property is set, once the user enters a number
-     * lower than this minimum the field becomes invalid and the {@link #valueProperty()} is set to {@code null}.
+     * lower than this minimum, the field becomes invalid and the {@link #valueProperty()} is set to {@code null}.
      * @return The minimum value.
      */
     public final ObjectProperty<T> minimumValueProperty() { return minimumValue; }
@@ -134,7 +134,7 @@ public abstract class NumberInputField<T extends Number> extends CustomTextField
 
     /**
      * The maximum value that can be entered in this field.  If this property is set, once the user enters a number
-     * greater than this minimum the field becomes invalid and the {@link #valueProperty()} is set to {@code null}.
+     * greater than this minimum, the field becomes invalid and the {@link #valueProperty()} is set to {@code null}.
      * @return The maximum value.
      */
     public final ObjectProperty<T> maximumValueProperty() { return maximumValue; }
