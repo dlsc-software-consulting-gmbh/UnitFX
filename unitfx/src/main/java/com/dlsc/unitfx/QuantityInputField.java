@@ -18,6 +18,7 @@ import javafx.scene.control.Skin;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
+import java.util.Objects;
 import java.util.function.Predicate;
 
 /**
@@ -47,7 +48,7 @@ public class QuantityInputField<Q extends Quantity<Q>> extends QuantityInputCont
 
     @Override
     public String getUserAgentStylesheet() {
-        return QuantityInputField.class.getResource("quantity-input-field.css").toExternalForm();
+        return Objects.requireNonNull(QuantityInputField.class.getResource("quantity-input-field.css")).toExternalForm();
     }
 
     /**
@@ -74,7 +75,7 @@ public class QuantityInputField<Q extends Quantity<Q>> extends QuantityInputCont
      *     <li>Precision=100</li>
      *     <li><b>ValueQuantity=300 Metre</b></li>
      * </ul>
-     * @return
+     * @return The precision.
      */
     public final ObjectProperty<Double> precisionProperty() {
         return precision;
@@ -94,8 +95,8 @@ public class QuantityInputField<Q extends Quantity<Q>> extends QuantityInputCont
 
     /**
      * Represents the system base unit, which is the default one for the control.  If the {@link #unitProperty() unit}
-     * selected is different to the base unit, the control will indicate visually (colored) that ambiguity. If no
-     * base unit is set, not color effect will be applied in the skin.
+     * selected is different to the base unit, the control will visually (colored) indicate that ambiguity. If no
+     * base unit is set, no color effect will be applied in the skin.
      *
      * @return The base unit.
      */
@@ -108,10 +109,11 @@ public class QuantityInputField<Q extends Quantity<Q>> extends QuantityInputCont
 
 
     /**
-     * Represents the precision as combination of {@link #precisionProperty()} ()} and {@link #precisionUnitProperty()}.
-     * This value is calculated automatically by the control.  It is refreshed every time the precision or the precision
-     * unit change.
-     * @return The read only property storing the precision quantity.
+     * Represents the precision as a combination of {@link #precisionProperty()} ()} and {@link #precisionUnitProperty()}.
+     * This value is calculated automatically by the control. It is refreshed every time the precision or the precision
+     * unit changes.
+     *
+     * @return The read-only property storing the precision quantity.
      */
     public final ReadOnlyObjectProperty<Quantity<Q>> precisionQuantityProperty() { return precisionQuantity.getReadOnlyProperty(); }
     private final ReadOnlyObjectWrapper<Quantity<Q>> precisionQuantity = new ReadOnlyObjectWrapper<>(this, "precisionQuantity");
@@ -121,7 +123,7 @@ public class QuantityInputField<Q extends Quantity<Q>> extends QuantityInputCont
 
     /**
      * Boolean property that indicates when the {@link #valueProperty() value} and the
-     * {@link #valueQuantityProperty() valueQuantity} are different because after a precision was applied.
+     * {@link #valueQuantityProperty() valueQuantity} are different because after precision was applied.
      *
      * @return The boolean property.
      */
@@ -145,7 +147,7 @@ public class QuantityInputField<Q extends Quantity<Q>> extends QuantityInputCont
 
     /**
      * The minimum value that can be entered in this field.  If this property is set, once the user enters a number
-     * lower than this minimum the field becomes invalid and the {@link #valueProperty()} is set to {@code null}.
+     * lower than this minimum, the field becomes invalid and the {@link #valueProperty()} is set to {@code null}.
      * @return The minimum value.
      */
     public final ObjectProperty<Double> minimumValueProperty() { return minimumValue; }
@@ -156,7 +158,7 @@ public class QuantityInputField<Q extends Quantity<Q>> extends QuantityInputCont
 
     /**
      * The maximum value that can be entered in this field.  If this property is set, once the user enters a number
-     * greater than this minimum the field becomes invalid and the {@link #valueProperty()} is set to {@code null}.
+     * greater than this minimum, the field becomes invalid and the {@link #valueProperty()} is set to {@code null}.
      * @return The maximum value.
      */
     public final ObjectProperty<Double> maximumValueProperty() { return maximumValue; }

@@ -15,12 +15,12 @@ public final class ControlsUtil {
     }
 
     /**
-     * Binds a boolean property to a style class in the given node.  Doing this the style class is switched on/off
+     * Binds a boolean property to a style class in the given node. Doing this, the style class is switched on/off
      * depending on the boolean property.
      *
-     * @param node The node which the style class will be applied to.
+     * @param node            The node which the style class will be applied to.
      * @param booleanProperty The flag to switch on/off.
-     * @param styleClass The style class to be applied.
+     * @param styleClass      The style class to be applied.
      */
     public static void bindBooleanToStyleClass(Node node, ObservableValue<Boolean> booleanProperty, String styleClass) {
         booleanProperty.addListener((obs, oldV, newV) -> {
@@ -37,9 +37,9 @@ public final class ControlsUtil {
     /**
      * Binds a boolean property to a pseudo class.  Doing this the pseudo class is switched on/off in the given node.
      *
-     * @param node The node which the pseudo class will be applied to.
+     * @param node            The node which the pseudo class will be applied to.
      * @param booleanProperty The flag to switch on/off.
-     * @param pseudoClass The style class to be applied.
+     * @param pseudoClass     The style class to be applied.
      */
     public static void bindBooleanToPseudoclass(Node node, ObservableValue<Boolean> booleanProperty, PseudoClass pseudoClass) {
         booleanProperty.addListener((obs, oldV, newV) -> node.pseudoClassStateChanged(pseudoClass, Boolean.TRUE.equals(booleanProperty.getValue())));
@@ -47,8 +47,9 @@ public final class ControlsUtil {
 
     /**
      * Calculates the distance between two angles in degrees, the result is a number between 0 - 180.
+     *
      * @param alpha The initial angle.
-     * @param beta The final angle.
+     * @param beta  The final angle.
      * @return The distance between the angles.
      */
     public static double distance(double alpha, double beta) {
@@ -58,13 +59,14 @@ public final class ControlsUtil {
 
     /**
      * Calculates the rotation, which means the signed distance between two angles.
+     *
      * @param alpha The initial angle.
-     * @param beta The final angle.
+     * @param beta  The final angle.
      * @return The rotation between the angles.
      */
     public static double rotation(double alpha, double beta) {
         double distance = distance(alpha, beta);
-        int sign = (alpha - beta >= 0 && alpha - beta <= 180) || (alpha - beta <=-180 && alpha - beta >= -360) ? 1 : -1;
+        int sign = (alpha - beta >= 0 && alpha - beta <= 180) || (alpha - beta <= -180 && alpha - beta >= -360) ? 1 : -1;
         return distance * sign;
     }
 
@@ -73,7 +75,7 @@ public final class ControlsUtil {
      *
      * @param middle The middle of the circle in pixel representation.
      * @param radius The radius of the circle.
-     * @param angle The angle for which the point is going to be calculated.
+     * @param angle  The angle for which the point is going to be calculated.
      * @return The point calculated.
      */
     public static Point2D calculatePointOnCircle(Point2D middle, double radius, double angle) {

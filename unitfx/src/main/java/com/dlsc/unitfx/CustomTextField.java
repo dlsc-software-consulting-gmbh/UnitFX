@@ -32,7 +32,6 @@ public class CustomTextField extends TextField {
         left.set(value);
     }
 
-
     /**
      * Stores the node shown on the right-hand side of the text field.
      */
